@@ -2,7 +2,7 @@
 import os, sys, smtplib, imapclient, pyzmail, subprocess
 from twilio.rest import TwilioRestClient
 
-bot_email = "************"
+bot_email = "************"                          #is this a sample email account?
 bot_password = "***********"
 
 smtp_server = "***********"
@@ -13,7 +13,7 @@ imapObj = imapclient.IMAPClient(imap_server, ssl=True)
 imapObj.login(bot_email, bot_password)
 imapObj.select_folder('INBOX', readonly=False)
 
-UIDs = imapObj.search([u'FROM', u'*************'])
+UIDs = imapObj.search([u'FROM', u'*************'])           #what we have to put here??
 print(UIDs)
 
 rawMessages = imapObj.fetch(UIDs, ['BODY[]', 'FLAGS'])
@@ -32,7 +32,7 @@ if len(links) == 0:
 	sys.exit()
 
 imapObj.delete_messages(torrent_uids)
-imapObj.expunge()
+imapObj.expunge()                                                                       #and where it openning torrent client?
 
 imapObj.logout()
 
